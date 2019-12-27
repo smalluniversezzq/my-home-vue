@@ -12,7 +12,7 @@ module.exports = {
   devServer: {
     open: true, // 启动服务后是否打开浏览器
     host: "0.0.0.0",
-    port: 9027, // 服务端口
+    port: 2266, // 服务端口
     https: false,
     hotOnly: false,
     proxy:null
