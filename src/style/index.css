@@ -31,4 +31,10 @@ ul, ol { list-style: none; }
 .tac{text-align: center;}
 .tal{text-align-last: left;}
 .mr{margin-right: 10px;}
+.container{
+  width: 1170px;
+  background: #fff;
+  margin: 0 auto;
+  text-align: left;
+}
 

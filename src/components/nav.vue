@@ -1,9 +1,9 @@
 <template>
   <div class="nav">
     <div class="nav-box">
-      <div class="container flex flex-wrap">
-        <div class="logo">
-          <img :src="logo" alt="">
+      <div class="container nav-header flex flex-wrap">
+        <div class="logo" @mouseleave="leaveLogo()">
+          <img id='my-svg' :src="logoSvg" alt="">
         </div>
         <ul class='nav-list flex flex-wrap '>
           <li>主页</li>
@@ -37,7 +37,8 @@ export default {
   },
   data (){
     return {
-      logo:require('@/assets/nav/logo.png'),
+      // logo:require('@/assets/nav/logo.png'),
+      logoSvg:require('@/assets/nav/logoSvg.svg'),
       fine:require('@/assets/nav/qingtian.png'),
       dataTime:"",
     }
@@ -49,12 +50,14 @@ export default {
         let times = new Date().getTime()
         this.dataTime =  moment(new Date(times)).format('YYYY-MM-DD  h:mm:ss')
       })
-     }
+     },
   },
   created(){
     this.getTime()
+    
   },
-  mounted(){},
+  mounted(){
+  },
   updated(){},
   desroyed(){},
 };
@@ -64,14 +67,10 @@ export default {
     .nav-box{
       width: 100%;
       height:50px; 
-      background: #f2f2f2;
-      .container{
-        width: 1170px;
-        background: #fff;
+      // background: #f2f2f2;
+      .nav-header{
         height: 50px;
         line-height: 50px;
-        margin: 0 auto;
-        text-align: left;
         .logo{
           width: 50px;
           height: 50px;
@@ -87,10 +86,12 @@ export default {
             width: 100px;
             height: 50px;
             text-align: center;
+            cursor:Pointer;
+            background: #fff;
           }
           li:hover {
-            background: #fff;
-            color:#0e122c;
+            color:#515151;
+            background: #e6e6e6;
           }
         }
         .time-nav{
