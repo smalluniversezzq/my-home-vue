@@ -3,7 +3,7 @@
     <Nav/>
     <div class="home-border" >
       <div class="benner" >
-        {{screenHeight}}
+          
       </div>
     </div>
   </div>

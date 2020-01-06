@@ -2,15 +2,15 @@
   <div class="nav">
     <div class="nav-box">
       <div class="container nav-header flex flex-wrap">
-        <div class="logo" @mouseleave="leaveLogo()">
+        <div class="logo" >
           <img id='my-svg' :src="logoSvg" alt="">
         </div>
         <ul class='nav-list flex flex-wrap '>
-          <li>主页</li>
-          <li>关于我</li>
-          <li>作品</li>
-          <li>联系方式</li>
-          <li>留言板</li>
+          <li @click='jumpTo("/")'>主页</li>
+          <li @click='jumpTo("about")'>关于我</li>
+          <li @click='jumpTo("works")'>作品</li>
+          <li @click='jumpTo("contact")'>联系方式</li>
+          <li @click='jumpTo("message")'>留言板</li>
         </ul>
         <ul class="time-nav flex flex-wrap just-end">
           <li class='time-box mr'>
@@ -37,7 +37,6 @@ export default {
   },
   data (){
     return {
-      // logo:require('@/assets/nav/logo.png'),
       logoSvg:require('@/assets/nav/logoSvg.svg'),
       fine:require('@/assets/nav/qingtian.png'),
       dataTime:"",
@@ -46,7 +45,6 @@ export default {
   methods:{
     getTime(){
       setInterval(()=>{
-        // + 1000 * 60 * 60 * 24, 
         let times = new Date().getTime()
         this.dataTime =  moment(new Date(times)).format('YYYY-MM-DD  h:mm:ss')
       })

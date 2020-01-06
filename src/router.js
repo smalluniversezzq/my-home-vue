@@ -9,13 +9,31 @@ export default new Router({
       path: "/",
       name: "home",
       component:()=>
-      import(/* webpackChunkName: "about" */ "@/views/Home.vue")
+      import(/* webpackChunkName: "about" */ "@/views/home/Home.vue")
     },
     {
       path: "/about",
       name: "about",
       component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/About.vue")
-    }
+      import(/* webpackChunkName: "about" */ "@/views/about/About.vue")
+    },
+    {
+      path: "/works",
+      name: "works",
+      component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/works/Works.vue")
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/contact/Contact.vue")
+    },
+    {
+      path: "/message",
+      name: "message",
+      component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/message/Message.vue")
+    },
   ]
 });
