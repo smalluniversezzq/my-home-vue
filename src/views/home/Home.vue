@@ -3,18 +3,18 @@
     <Nav/>
     <div class="home-border" >
       <div class="benner" >
-          
       </div>
     </div>
+    <Foot/>
   </div>
 </template>
 
 <script>
-import Nav from '@/components/nav.vue'
+// import Nav from '@/components/nav.vue'
+// import Foot from '@/components/foot.vue'
 export default {
   name: "home",
   components: {
-    Nav,
   },
   data (){
     return {

@@ -33,8 +33,19 @@ ul, ol { list-style: none; }
 .mr{margin-right: 10px;}
 .container{
   width: 1170px;
-  background: #fff;
+  /* background: #fff; */
   margin: 0 auto;
   text-align: left;
 }
+.mt{margin-top: 10px;}
+.mt-lg{margin-top: 20px;}
+.mt-sm{margin-top: 5px;}
+
+.mr-sm{margin-right: 5px;}
+.mr{margin-right: 10px;}
+.mr-lg{margin-right: 20px;}
+.ml-sm{margin-left: 5px;}
+.ml{margin-left: 10px;}
+.ml-lg{margin-left: 20px;}
+.cursor-pointer{cursor:pointer}
 

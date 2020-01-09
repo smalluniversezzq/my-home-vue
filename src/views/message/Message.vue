@@ -2,20 +2,17 @@
   <div class="message">
     <Nav/>
     <div class="container">
-      message
+      <h1>This is an contact page</h1>
     </div>
     <Foot/>
   </div>
 </template>
 <script>
 import { get } from "@/api/index";
-import Nav from '@/components/nav.vue'
-import Foot from '@/components/foot.vue'
+
 export default {
   name:"message",
   components:{
-    Nav,
-    Foot,
   },
   created() {
     get().then(res => {

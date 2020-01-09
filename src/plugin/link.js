@@ -1,6 +1,6 @@
 export default {
   install (Vue, options) {
-    console.log(Vue, "as", options, 'Vue, options')
+    // console.log(Vue, "as", options, 'Vue, options')
     Vue.prototype.jumpTo = function (path) {
       options.router.push(path)
     }
@@ -11,7 +11,9 @@ export default {
       window.history.length > 1 ? options.router.go(-1) : options.router.push('/')
     }
     Vue.prototype.hide = function () {
-      
+    }
+    Vue.prototype.jumpOpen = function(url){
+      window.open(url)
     }
     Vue.prototype.jumpTos = function (item) {
       switch (item.types) {
