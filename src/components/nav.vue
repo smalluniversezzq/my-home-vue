@@ -28,7 +28,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import moment from 'moment'
 export default {
@@ -40,6 +39,7 @@ export default {
       logoSvg:require('@/assets/nav/logoSvg.svg'),
       fine:require('@/assets/nav/qingtian.png'),
       dataTime:"",
+      position:'',
     }
   },
   methods:{
@@ -49,12 +49,38 @@ export default {
         this.dataTime =  moment(new Date(times)).format('YYYY-MM-DD  h:mm:ss')
       })
      },
+    getLocation(){
+      if(navigator.geolocation){
+        console.log('1111')
+          /*document.getElementById('support').innerHTML = '你的浏览器支持定位属性';*/
+        navigator.geolocation.getCurrentPosition((position)=>{
+              console.log('success')
+                // var latitude = position.coords.latitude;
+                // var logitude = position.coords.longitude;
+                // alert(latitude+','+logitude);
+            },
+            // (error)=>{
+            //   console.log('err')
+            //     var code = error.code;
+            //     var msg = error.message;
+            //     alert(code);
+            //     alert(msg);
+            // }
+        );
+      }else{
+          /*document.getElementById('support').innerHTML = '对不起，你的浏览器不支持定位属性';*/
+        alert('对不起，你的浏览器不支持定位属性');
+      }
+    },
   },
   created(){
-    this.getTime()
+    this.getTime();
+    this.getLocation()
     
   },
   mounted(){
+
+
   },
   updated(){},
   desroyed(){},

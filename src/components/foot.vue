@@ -111,6 +111,7 @@ export default {
       height: 150px;
       background: #fff;
       padding-top: 1px;
+      transition: all 5s linear;
       div{
         .friendship{
           color: #515151;
