@@ -1,10 +1,10 @@
 <template>
   <div class="foot">
     <div class="footer">
-      <div class="container">
-        <div class='friendship mt' onselectstart="return false;">
+      <div class="container mt">
+        <!-- <div class='friendship mt' onselectstart="return false;">
           友情链接
-        </div>
+        </div> -->
         <ul class="friendship-box flex flex-wrap just-center" onselectstart="return false;">
           <li class='mt-sm mr ml friendship-list ' v-for='(item,index) in shipList' :Key='index'>
             <span class='cursor-pointer' @click='jumpOpen(item.url)'>{{item.title}}</span>
@@ -108,8 +108,8 @@ export default {
   .foot{
     .footer{
       width: 100%;
-      height: 170px;
-      background: #b1b1b1;
+      height: 150px;
+      background: #fff;
       padding-top: 1px;
       div{
         .friendship{
@@ -143,9 +143,20 @@ export default {
         }
         .record-number{
           font-size: 12px
-
         }
       }
+    }
+    .footer:hover{
+      animation: footerAnimate linear 5s;
+      background: #b1b1b1;
+    }
+  }
+  @keyframes footerAnimate {
+    from {
+      background: #fff;
+    }
+    to {
+      background:#b1b1b1;
     }
   }
 </style>
