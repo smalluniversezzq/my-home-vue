@@ -29,7 +29,10 @@
   </div>
 </template>
 <script>
+import Vue from 'vue'
 import moment from 'moment'
+import { getHeweather } from '@/api/home/index.js'
+
 export default {
   name: "headNav",
   components: {
@@ -40,6 +43,7 @@ export default {
       fine:require('@/assets/nav/qingtian.png'),
       dataTime:"",
       position:'',
+      city:"",
     }
   },
   methods:{
@@ -49,38 +53,45 @@ export default {
         this.dataTime =  moment(new Date(times)).format('YYYY-MM-DD  h:mm:ss')
       })
      },
-    getLocation(){
-      if(navigator.geolocation){
-        console.log('1111')
-          /*document.getElementById('support').innerHTML = '你的浏览器支持定位属性';*/
-        navigator.geolocation.getCurrentPosition((position)=>{
-              console.log('success')
-                // var latitude = position.coords.latitude;
-                // var logitude = position.coords.longitude;
-                // alert(latitude+','+logitude);
-            },
-            // (error)=>{
-            //   console.log('err')
-            //     var code = error.code;
-            //     var msg = error.message;
-            //     alert(code);
-            //     alert(msg);
-            // }
-        );
-      }else{
-          /*document.getElementById('support').innerHTML = '对不起，你的浏览器不支持定位属性';*/
-        alert('对不起，你的浏览器不支持定位属性');
-      }
+    getMap(){
+      let _this = this
+      var geolocation=new BMap.Geolocation();
+      geolocation.getCurrentPosition(function(r){
+        if(_this.getStatus()==BMAP_STATUS_SUCCESS){
+          var lat=r.address.lat//当前经度
+          var lng=r.address.lng//当前纬度
+          var province=r.address.province //返回当前省份
+          var city=r.address.city//返回当前城市
+          console.log(city)
+          Vue.ls.set("city",city);
+          _this.city = city
+          _this.getHefengFn()
+        }
+      })
     },
+    getHefengFn(){
+      getHeweather({
+          location:this.city,
+          key:'8dda60d1afc549339bf5d0964955ce91'
+        }).then(res =>{
+          console.log(res)
+          if(res.status === 200){
+            console.log(res.data.HeWeather6[0].basic);
+            console.log(res.data.HeWeather6[0].now);
+          }
+        })
+    }
   },
   created(){
     this.getTime();
-    this.getLocation()
-    
   },
   mounted(){
-
-
+    if(Vue.ls.get("city")){
+      this.city = Vue.ls.get("city")
+      this.getHefengFn()
+    }else{
+      this.getMap();
+    }
   },
   updated(){},
   desroyed(){},

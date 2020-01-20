@@ -24,7 +24,6 @@
 import anime from 'animejs'
 // import Nav from '@/components/nav.vue'
 // import Foot from '@/components/foot.vue'
-import { getHeweather } from '@/api/home/index.js'
 export default {
   name: "home",
   components: {
@@ -48,15 +47,7 @@ export default {
 
   },
   created(){
-    getHeweather({
-      location:'beijing',
-      key:'8dda60d1afc549339bf5d0964955ce91'
-    }).then(res =>{
-      console.log(res)
-      if(res.status === 200){
-        console.log(res.data.HeWeather6[0].basic);
-      }
-    })
+
   },
   mounted(){
     this.toanimes()
