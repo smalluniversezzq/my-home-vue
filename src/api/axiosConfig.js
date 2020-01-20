@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const server = axios.create({
-  baseURL: "",
-  timeout: 5000
+  // baseURL: "",
+  baseURL: "https://free-api.heweather.net",
+  timeout: 100000
 });
 
 // 添加一个请求拦截器
