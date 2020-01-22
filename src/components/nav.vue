@@ -55,31 +55,39 @@ export default {
      },
     getMap(){
       let _this = this
+      // console.log(_this.getStatus(),'ovee')
       var geolocation=new BMap.Geolocation();
       geolocation.getCurrentPosition(function(r){
-        if(_this.getStatus()==BMAP_STATUS_SUCCESS){
+        // if(_this.getStatus()==BMAP_STATUS_SUCCESS){
           var lat=r.address.lat//当前经度
           var lng=r.address.lng//当前纬度
           var province=r.address.province //返回当前省份
           var city=r.address.city//返回当前城市
           console.log(city)
-          Vue.ls.set("city",city);
+          // Vue.ls.set("city",city,12 * 60 * 60 * 1000);
+          Vue.ls.set("city",city,10000);
           _this.city = city
-          _this.getHefengFn()
-        }
+          console.log(sessionStorage.getItem('weatherTxt'),'ovee')
+          if(sessionStorage.getItem('weatherTxt')){
+          }else{
+            console.log('没有存储')
+            _this.getHefengFn()
+          }
+        // }
       })
     },
     getHefengFn(){
       getHeweather({
-          location:this.city,
-          key:'8dda60d1afc549339bf5d0964955ce91'
-        }).then(res =>{
-          console.log(res)
-          if(res.status === 200){
-            console.log(res.data.HeWeather6[0].basic);
-            console.log(res.data.HeWeather6[0].now);
-          }
-        })
+        location:this.city,
+        key:'8dda60d1afc549339bf5d0964955ce91'
+      }).then(res =>{
+        console.log(res)
+        if(res.status === 200){
+          console.log(res.data.HeWeather6[0].basic);
+          console.log(res.data.HeWeather6[0].now);
+          sessionStorage.setItem('weatherTxt',res.data.HeWeather6[0].lifestyle[0].txt)
+        }
+      })
     }
   },
   created(){
@@ -88,7 +96,6 @@ export default {
   mounted(){
     if(Vue.ls.get("city")){
       this.city = Vue.ls.get("city")
-      this.getHefengFn()
     }else{
       this.getMap();
     }
