@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <Nav/>
+    <Nav class='nav-boxs' :type='type'/>
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
       <swiper-slide>
-        <div class="home-border" :style='{width:w+"px",height:(h-50)+"px"}'>
-          <div class="benner" :style='{width:w+"px",height:(h-50)+"px"}'>
-            <div class='benner-bg'>
+        <div class="home-border" :style='{width:w+"px",height:(h50)+"px"}'>
+          <div class="benner" :style='{width:w+"px",height:(h)+"px"}'>
+            <div class='benner-bg' :style='{backgroundImage:`url(${bg[0]})`}'>
             </div>
           </div>
           <div class='animate-box'>
@@ -14,16 +14,26 @@
           <div class='bg-mast'>
           </div>
           <div class='content'>
-            <div class='animes' >
-              你好1
+            <div class="font-style font-size-24 letter-spacing-6">
+              我是SmallUniverse
             </div>
+            <div class='mt-xl font-size-20 letter-spacing-6'>
+              一位Code Porter
+            </div>
+            <div class='mt-xl font-size-18 letter-spacing-6'>
+             
+            </div>
+            <div class='mt-xl font-size-16 letter-spacing-6'>
+              欢迎来到我的世界
+            </div>
+       
           </div>
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="home-border" :style='{width:w+"px",height:(h-50)+"px"}'>
-          <div class="benner" :style='{width:w+"px",height:(h-50)+"px"}'>
-            <div class='benner-bg'>
+        <div class="home-border" :style='{width:w+"px",height:(h50)+"px"}'>
+          <div class="benner" :style='{width:w+"px",height:(h)+"px"}'>
+            <div class='benner-bg' :style='{backgroundImage:`url(${bg[1]})`}'>
             </div>
           </div>
           <div class='animate-box'>
@@ -31,15 +41,29 @@
           <div class='bg-mast'>
           </div>
           <div class='content'>
-            <div class='animes' >
-              你好2
-            </div>
           </div>
         </div>
       </swiper-slide>
-      <swiper-slide>I'm Slide 3</swiper-slide>
+      <swiper-slide>
+        <div class="home-border" :style='{width:w+"px",height:(h50)+"px"}'>
+          <div class="benner" :style='{width:w+"px",height:(h)+"px"}'>
+            <div class='benner-bg' :style='{backgroundImage:`url(${bg[1]})`}'>
+            </div>
+          </div>
+          <div class='animate-box'>
+          </div>
+          <div class='bg-mast'>
+          </div>
+          <div class='content'>
+          </div>
+        </div>
+      </swiper-slide>
      </swiper>
     <!-- <Foot/> -->
+    <div class='point'>
+      <p></p>
+      <i></i>
+    </div>
   </div>
 </template>
 
@@ -56,6 +80,7 @@ export default {
   },
   data (){
     return {
+      type:"home",
       swiperOption: {
         notNextTick: true, //notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
         direction: "vertical", //水平方向移动
@@ -70,12 +95,16 @@ export default {
         observeParents: true, //将observe应用于Swiper的父元素。当Swiper的父元素变化时，例如window.resize，Swiper更新
         on: {
           slideChangeTransitionStart: function(){
-            alert(this.activeIndex);
+            // alert(this.activeIndex);
           },
         },
       },
       h:'',
       w:'',
+      bg:[
+        require("@/assets/home/bg.png"),
+        require("@/assets/home/bg1.png"),
+      ]
 
     }
   },
@@ -110,23 +139,27 @@ export default {
 </script>
 <style lang="less" scoped>
   .home{
+    position: relative;
     .home-border{
       min-width: 100%;
-      height: 800px;
+      height: 100%;
+      // height: 800px;
       position: relative;
       .benner{
         overflow:hidden;
         width: 100%;
-        height: 800px;
+        height: 100%;
+        // height: 800px;
         position: absolute;
         z-index: 1;
         .benner-bg{
           width: 100%;
           height: 100%;
-          background: url('http://aquatilis.tv/wp-content/uploads/2018/12/dark-1838340.jpg');
+          // background: url('http://aquatilis.tv/wp-content/uploads/2018/12/dark-1838340.jpg');
           background-size: cover;
           background-position: 50% 50%;
-          background-attachment: scroll;
+          background-repeat:no-repeat;
+          // background-attachment: scroll;
           transform-origin: 50% 80%;
           animation: coverZoom linear 50s;
           animation-iteration-count: infinite;
@@ -136,6 +169,10 @@ export default {
           -moz-animation-iteration-count: infinite;
           -ms-animation: coverZoom linear 50s;
           -ms-animation-iteration-count: infinite;
+
+          background-repeat:no-repeat;
+          background-position:center;
+          background-size: 100% 100%;
         }
       }
       .animate-box{
@@ -155,12 +192,45 @@ export default {
         z-index: 3;
       }
       .content{
+        width: 100%;
+        height: 500px;
         position:absolute;
+        top: 30%;
         opacity: 1;
         color: #fff;
         z-index: 10;
+        .font-style {
+        }
       }
       
+    }
+    .point{
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      z-index: 99;
+      width: 36px;
+      height: 53px;
+      margin-left: -18px;
+      p{
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        margin-left: -3px;
+        display: block;
+        width: 6px;
+        height: 12px;
+        background: #fff;
+        border-radius: 5px;
+        animation:pointAnim 1.5s ease-in-out 0s infinite;
+      }
+      i{
+        display: block;
+        width: 36px;
+        height: 53px;
+        background: url('../../assets/home/Sprite.png') no-repeat -2px -2px;
+      }
+
     }
   }
 @keyframes coverZoom {
@@ -171,4 +241,12 @@ export default {
     transform: scale(1.24);
   }
 }
+  @keyframes pointAnim{
+    0% { top: 10px; }
+    50%{ top: 15px;}
+    100% { top: 10px; }
+  }
+</style>
+<style scoped>
+
 </style>

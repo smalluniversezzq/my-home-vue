@@ -8,7 +8,7 @@ import Nav from '@/components/nav.vue'
 import Foot from '@/components/foot.vue'
 import VueStorage from 'vue-ls'
 import vueAwesomeSwiper from 'vue-awesome-swiper'
-
+import '@/assets/css/common.css' // 公共样式
 
 Vue.use(VueStorage);
 Vue.component("Nav", Nav);

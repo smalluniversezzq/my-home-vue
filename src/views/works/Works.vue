@@ -1,6 +1,6 @@
 <template>
   <div class="works">
-    <Nav/>
+    <Nav class='nav-boxs' :type='home'/>
     <h1>This is an works page</h1>
     <Foot/>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <Nav/>
+    <Nav class='nav-boxs' :type='home'/>
     <h1>This is an about page</h1>
     <Foot/>
   </div>

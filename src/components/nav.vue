@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <div class="nav-box">
+    <div :class="type=='home'?'nav-box-home':'nav-box'" >
       <div class="container nav-header flex flex-wrap">
         <div class="logo" >
           <img id='my-svg' :src="logoSvg" alt="">
@@ -35,6 +35,7 @@ import { getHeweather } from '@/api/home/index.js'
 
 export default {
   name: "headNav",
+  props:['type'],
   components: {
   },
   data (){
@@ -106,30 +107,31 @@ export default {
 </script>
 <style lang="less" scoped>
   .nav{
+    margin-left: -585px;
     .nav-box{
       width: 100%;
       height:50px; 
-      // background: #f2f2f2;
+      background: #fff;
       .nav-header{
         height: 50px;
         line-height: 50px;
         .logo{
           width: 50px;
           height: 50px;
-          background: #fff;
+          // background: #fff;
           img{
             width: 100%;
           }
         }
         .nav-list{
           width: 820px;
-          background: #fff;
+          // background: #fff;
           li{
             width: 100px;
             height: 50px;
             text-align: center;
             cursor:Pointer;
-            background: #fff;
+            // background: #fff;
           }
           li:hover {
             color:#515151;
@@ -159,6 +161,60 @@ export default {
         }
       }
     }
-
+    .nav-box-home{
+      width: 100%;
+      height:50px; 
+      background:rgba(red, green, blue, 0);
+      color: #fff;
+      .nav-header{
+        height: 50px;
+        line-height: 50px;
+        .logo{
+          width: 50px;
+          height: 50px;
+          // background: #fff;
+          img{
+            width: 100%;
+          }
+        }
+        .nav-list{
+          width: 820px;
+          // background: #fff;
+          li{
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            cursor:Pointer;
+            // background: #fff;
+          }
+          li:hover {
+            // color:#515151;
+            // background: #e6e6e6;
+          }
+        }
+        .time-nav{
+          width:300px;
+          height: 50px;
+          background:fff;
+          color: #fff;
+          .weather-box{
+            width: 30px;
+            .weather{
+              width: 24px;
+              line-height: 50px;
+              img{
+                margin-top: 10px;
+                width:100%;
+              }
+            }
+          }
+          .time-box{
+            .time{
+              color:#fff;
+            }
+          }
+        }
+      }
+    }
   }
 </style>
