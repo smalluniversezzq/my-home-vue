@@ -2,9 +2,8 @@
   <div class="home">
     <Nav class='nav-boxs' :type='type'/>
     <swiper :options="swiperOption" ref="mySwiper">
-      <!-- slides -->
       <swiper-slide>
-        <div class="home-border" :style='{width:w+"px",height:(h50)+"px"}'>
+        <div class="home-border" :style='{width:w+"px",height:(h)+"px"}'>
           <div class="benner" :style='{width:w+"px",height:(h)+"px"}'>
             <div class='benner-bg' :style='{backgroundImage:`url(${bg[0]})`}'>
             </div>
@@ -13,7 +12,7 @@
           </div>
           <div class='bg-mast'>
           </div>
-          <div class='content'>
+          <div class='home-content'>
             <div class="font-style font-size-24 letter-spacing-6">
               我是SmallUniverse
             </div>
@@ -26,12 +25,11 @@
             <div class='mt-xl font-size-16 letter-spacing-6'>
               欢迎来到我的世界
             </div>
-       
           </div>
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="home-border" :style='{width:w+"px",height:(h50)+"px"}'>
+        <div class="home-border" :style='{width:w+"px",height:(h)+"px"}'>
           <div class="benner" :style='{width:w+"px",height:(h)+"px"}'>
             <div class='benner-bg' :style='{backgroundImage:`url(${bg[1]})`}'>
             </div>
@@ -40,7 +38,13 @@
           </div>
           <div class='bg-mast'>
           </div>
-          <div class='content'>
+          <div class='work-content'>
+            <div class='work-content-box'>
+              <div class='work-content-title tal'>123</div>
+              <div class='work-swiper-box'>
+                <WorkSwiper></WorkSwiper>
+              </div>
+            </div>
           </div>
         </div>
       </swiper-slide>
@@ -59,7 +63,6 @@
         </div>
       </swiper-slide>
      </swiper>
-    <!-- <Foot/> -->
     <div class='point'>
       <p></p>
       <i></i>
@@ -69,14 +72,19 @@
 
 <script>
 import anime from 'animejs'
+import WorkSwiper from '@/components/swipers/WorkSwiper.vue'
 export default {
   name: "home",
-  components: {
+  components:{
+    WorkSwiper
   },
   computed:{
     swiper() {
       return this.$refs.mySwiper.swiper;
     },
+    // swipers() {
+    //   return this.$refs.mySwiperWork.swiper;
+    // },
   },
   data (){
     return {
@@ -93,12 +101,28 @@ export default {
         height: window.innerHeight, // 高度设置，占满设备高度
         resistanceRatio: 0, //抵抗率。边缘抵抗力的大小比例。值越小抵抗越大越难将slide拖离边缘，0时完全无法拖离。本业务需要
         observeParents: true, //将observe应用于Swiper的父元素。当Swiper的父元素变化时，例如window.resize，Swiper更新
+        initialSlide:1,
         on: {
           slideChangeTransitionStart: function(){
             // alert(this.activeIndex);
           },
         },
       },
+      // swiperOptionWork:{
+      //   notNextTick: true, //notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
+      //   direction: "horizontal", //水平方向移动
+      //   grabCursor: true, //鼠标覆盖Swiper时指针会变成手掌形状，拖动时指针会变成抓手形状
+      //   setWrapperSize: true, //Swiper使用flexbox布局(display: flex)，开启这个设定会在Wrapper上添加等于slides相加的宽或高，在对flexbox布局的支持不是很好的浏览器中可能需要用到。
+      //   autoHeight: true, //自动高度。设置为true时，wrapper和container会随着当前slide的高度而发生变化
+      //   slidesPerView: 1, //设置slider容器能够同时显示的slides数量(carousel模式)。可以设置为数字（可为小数，小数不可loop），或者 'auto'则自动根据slides的宽度来设定数量。loop模式下如果设置为'auto'还需要设置另外一个参数loopedSlides。
+      //   mousewheel: true, //开启鼠标滚轮控制Swiper切换。可设置鼠标选项，默认值false
+      //   mousewheelControl: true, //同上
+      //   width:" 100%", // 高度设置，占满设备高度
+      //   height:"500px", // 高度设置，占满设备高度
+      //   resistanceRatio: 0, //抵抗率。边缘抵抗力的大小比例。值越小抵抗越大越难将slide拖离边缘，0时完全无法拖离。本业务需要
+      //   observeParents: true, //将observe应用于Swiper的父元素。当Swiper的父元素变化时，例如window.resize，Swiper更新
+      //   initialSlide:0,
+      // },
       h:'',
       w:'',
       bg:[
@@ -191,7 +215,7 @@ export default {
         background-color: rgba(0,0,0,.25);
         z-index: 3;
       }
-      .content{
+      .home-content{
         width: 100%;
         height: 500px;
         position:absolute;
@@ -202,7 +226,32 @@ export default {
         .font-style {
         }
       }
-      
+      .work-content{
+        width: 100%;
+        height: 600px;
+        position:absolute;
+        top: 15%;
+        opacity: 1;
+        color: #fff;
+        z-index: 10;
+        background: rgba(0, 0, 0, .3);
+        .work-content-box{
+          width: 1170px;
+          height: 100%;
+          // background: green;
+          margin: 0 auto;
+          .work-content-title{
+            line-height: 50px;
+          }
+          .work-swiper-box{
+            width:100%;
+            height:500px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            overflow: hidden;
+          }
+        }
+      }
     }
     .point{
       position: absolute;

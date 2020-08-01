@@ -7,8 +7,8 @@
         </div>
         <ul class='nav-list flex flex-wrap '>
           <li @click='jumpTo("/")'>主页</li>
-          <li @click='jumpTo("about")'>关于我</li>
           <li @click='jumpTo("works")'>作品</li>
+           <li @click='jumpTo("about")'>关于我</li>
           <li @click='jumpTo("contact")'>联系方式</li>
           <li @click='jumpTo("message")'>留言板</li>
         </ul>
