@@ -12,4 +12,10 @@
   text-align: center;
   color: #2c3e50;
 }
+.nav-boxs{
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    z-index: 1000;
+  }
 </style>
