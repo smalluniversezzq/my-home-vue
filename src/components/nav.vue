@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <div :class="type=='home'?'nav-box-home':'nav-box'" >
+    <div :class="type==='home'?'nav-box-home':'nav-box'" >
       <div class="container nav-header flex flex-wrap">
         <div class="logo" >
           <img id='my-svg' :src="logoSvg" alt="">

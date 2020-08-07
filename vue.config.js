@@ -15,8 +15,10 @@ module.exports = {
     port: 2266, // 服务端口
     https: false,
     hotOnly: false,
-    proxy:'http://localhost:8000'
+    proxy:'http://localhost:8000',
+    inline:true,
   },
+  
   // 配置简写路径
   chainWebpack: config => {
     config.resolve.alias

@@ -29,7 +29,7 @@
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="home-border" :style='{width:w+"px",height:(h)+"px"}'>
+        <div class="home-border" :style='{width:w+"px",height:(h)+"px"}' >
           <div class="benner" :style='{width:w+"px",height:(h)+"px"}'>
             <div class='benner-bg' :style='{backgroundImage:`url(${bg[1]})`}'>
             </div>
@@ -39,12 +39,20 @@
           <div class='bg-mast'>
           </div>
           <div class='work-content'>
-            <div class='work-content-box'>
-              <div class='work-content-title tal'>123</div>
+            <div class='work-content-box mt'>
+              <div class='mt tal nav-title'>Works column</div>
+              <div class='work-content-title tac'>title</div>
               <div class='work-swiper-box'>
-                <WorkSwiper></WorkSwiper>
+                <WorkSwiper class='mt-xl'></WorkSwiper>
+                <p class='describe'>describe</p>
               </div>
             </div>
+          </div>
+          <div class='shortcut'>
+            <i class='shortcut-bg1'></i>
+            <i class='shortcut-bg2'></i>
+            <i class='shortcut-bg3'></i>
+            <i class='shortcut-bg4'></i>
           </div>
         </div>
       </swiper-slide>
@@ -240,15 +248,72 @@ export default {
           height: 100%;
           // background: green;
           margin: 0 auto;
+          .nav-title{
+            font-size: 20px;
+            margin-left: 30px;
+          }
           .work-content-title{
             line-height: 50px;
           }
           .work-swiper-box{
             width:100%;
             height:500px;
-            border: 1px solid #fff;
-            border-radius: 5px;
             overflow: hidden;
+      
+            .describe{
+
+            }
+          }
+        }
+      }
+      .shortcut{
+        position: absolute;
+        right: 30px;
+        top:50%;
+        font-size:25px;
+        margin-top: -25px;
+        width: 40px;
+        height: 40px;
+        z-index: 1001;
+        .shortcut-bg1{
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 20px;
+          height: 20px;
+          background: url('../../assets/home/Sprite.png') no-repeat -50px -8px;
+          animation:shortcut1 4s ease-in-out 0s infinite;
+          }
+        .shortcut-bg2{
+          position: absolute;
+          top: 0;
+          left: 20px;
+          display: block;
+          width: 20px;
+          height: 20px;
+          background: url('../../assets/home/Sprite.png') no-repeat -71px -8px;
+          animation:shortcut2 4s ease-in-out 0s infinite;
+          }
+        .shortcut-bg3{
+          position: absolute;
+          top: 20px;
+          left: 0px;
+          display: block;
+          width: 20px;
+          height: 20px;
+          background: url('../../assets/home/Sprite.png') no-repeat -50px -8px;
+          animation:shortcut3 4s ease-in-out 0s infinite;
+          }
+        .shortcut-bg4{
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          display: block;
+          width: 20px;
+          height: 20px;
+          background: url('../../assets/home/Sprite.png') no-repeat -50px -8px;
+          animation:shortcut4 4s ease-in-out 0s infinite;
           }
         }
       }
@@ -278,22 +343,50 @@ export default {
         width: 36px;
         height: 53px;
         background: url('../../assets/home/Sprite.png') no-repeat -2px -2px;
-      }
+        
 
     }
   }
-@keyframes coverZoom {
-  0%,100% {
-    transform: scale(1);
+  @keyframes coverZoom {
+    0%,100% {
+      transform: scale(1);
+    }
+    50%{
+      transform: scale(1.24);
+    }
   }
-  50%{
-    transform: scale(1.24);
-  }
-}
   @keyframes pointAnim{
     0% { top: 10px; }
     50%{ top: 15px;}
     100% { top: 10px; }
+  }
+  @keyframes shortcut1{
+    0% { top: 0px;left: 0px; }
+    25%{ top: 0px; left: 20px;}
+    50%{  top: 20px; left: 20px;}
+    75% {top: 20px; left: 0px; }
+    100% {top: 0px;left: 0px; }
+  }
+  @keyframes shortcut2{
+    0% { top: 0px; left: 20px;}
+    25%{ top: 20px; left: 20px;}
+    50%{ top: 20px; left: 0px;}
+    75% {top: 0px;left: 0px; }
+    100% { top: 0px; left: 20px;}
+  }
+  @keyframes shortcut3{
+    0% { top: 20px; left: 0px;}
+    25%{ top: 0px;left: 0px; }
+    50%{ top: 0px; left: 20px;}
+    75% {top: 20px; left: 20px; }
+    100% {top: 20px; left: 0px;}
+  }
+  @keyframes shortcut4{
+    0% { top: 20px; left: 20px; }
+    25%{ top: 20px; left: 0px;}
+    50%{  top: 0px;left: 0px; }
+    75% { top: 0px; left: 20px; }
+    100% {top: 20px; left: 20px; }
   }
 </style>
 <style scoped>
